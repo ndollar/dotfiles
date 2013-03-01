@@ -1,1 +1,20 @@
+echo "Loading bash_node"
+NODE_MODULE_BIN="./node_modules/.bin"
+
+nmbin() {
+  if (  verify_node_modules ); then
+    $NODE_MODULE_BIN/"$@";
+  fi
+}
+
+verify_node_modules() {
+  if [ ! -d "$NODE_MODULE_BIN" ]; then
+    echo "No node_modules directory. Make sure you are in the top level node folder";
+    return 1;
+  fi
+  return 0;
+}	
+
+alias mocha-coffee='nmbin mocha --compilers coffee:coffee-script' 
+alias coffee='nmbin coffee'
 alias node-tree='tree -I "node_modules|bootstrap|jquery*"'
