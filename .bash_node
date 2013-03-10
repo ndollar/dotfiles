@@ -1,4 +1,3 @@
-echo "Loading bash_node"
 NODE_MODULE_BIN="./node_modules/.bin"
 
 nmbin() {

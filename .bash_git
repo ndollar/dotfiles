@@ -1,4 +1,3 @@
-echo "Loading bash_git"
 alias gits="git status"
 alias gitcm="git commit -m"
 alias gitcam="git commit -am"
