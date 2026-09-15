@@ -29,5 +29,5 @@ Commit and push changes from the chezmoi source dir (`chezmoi cd`) or directly i
 
 ## Notes
 
-- `nvim` config is based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
+- `nvim`: `install.sh` clones [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) fresh into `~/.config/nvim`; this repo only tracks `lua/custom/`, so kickstart itself stays pullable/upstream. If you start editing `init.lua` directly, track that file here too.
 - Nothing in this repo should ever contain secrets/tokens — use a password manager or `chezmoi`'s encryption support (age/gpg) if that's ever needed.

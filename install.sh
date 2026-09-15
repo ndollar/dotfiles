@@ -10,6 +10,10 @@ if ! command -v chezmoi >/dev/null 2>&1; then
   brew install chezmoi
 fi
 
+if [ ! -d "$HOME/.config/nvim" ]; then
+  git clone https://github.com/nvim-lua/kickstart.nvim.git "$HOME/.config/nvim"
+fi
+
 chezmoi init --apply "$(dirname "$0")"
 
 if [ ! -d "$HOME/.nvm" ]; then
