@@ -1,4 +1,3 @@
-tap "oven-sh/bun"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
 # Manage your dotfiles across multiple diverse machines, securely
@@ -39,8 +38,6 @@ brew "ripgrep"
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "oven-sh/bun/bun", trusted: true
 cask "font-jetbrains-mono-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
