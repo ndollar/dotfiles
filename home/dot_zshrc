@@ -1,0 +1,52 @@
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+plugins=(git zsh-syntax-highlighting fzf-zsh-plugin)
+
+source $ZSH/oh-my-zsh.sh
+
+# <NVM>
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+    fi
+  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+# </NVM>
+
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+# <asdf>
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export PATH="$(go env GOPATH)/bin:$PATH"
+# </asdf>
+
+[ -s "$HOME/.docker/init-zsh.sh" ] && source "$HOME/.docker/init-zsh.sh"
+
+[ -s "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+alias local-ports='for p in 3000 3001 3002; do echo -n "Port $p: "; pid=$(lsof -iTCP:$p -sTCP:LISTEN -t 2>/dev/null); if [ -n "$pid" ]; then cwd=$(lsof -p $pid -a -d cwd -Fn 2>/dev/null | awk "/^n/ {print substr(\$0,2)}"); echo "taken (PID $pid) $cwd"; else echo "available"; fi; done'
+
+alias repo-status='for dir in ~/code/*/ ~/code/*/*/; do if [ -d "$dir/.git" ]; then branch=$(git -C "$dir" branch --show-current 2>/dev/null); relpath=${dir#$HOME/code/}; changes=$(git -C "$dir" status --porcelain 2>/dev/null | wc -l | tr -d " "); if [ "$changes" -gt 0 ]; then dirty="*$changes"; else dirty=""; fi; printf "%-40s %-20s %s\n" "${relpath%/}" "$branch" "$dirty"; fi; done'
+
+setopt extended_glob
+alias gdh="git diff HEAD~1"

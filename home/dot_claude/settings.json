@@ -1,0 +1,7 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); current_dir=$(echo \"$input\" | jq -r '.workspace.current_dir'); dir_name=$(basename \"$current_dir\"); if [ -d \"$current_dir/.git\" ]; then cd \"$current_dir\" && branch=$(GIT_OPTIONAL_LOCKS=0 git branch --show-current 2>/dev/null) && status=$(GIT_OPTIONAL_LOCKS=0 git status --porcelain 2>/dev/null) && if [ -n \"$status\" ]; then printf \"➜  %s git:(%s) ✗\" \"$dir_name\" \"$branch\"; else printf \"➜  %s git:(%s)\" \"$dir_name\" \"$branch\"; fi; else printf \"➜  %s\" \"$dir_name\"; fi"
+  },
+  "alwaysThinkingEnabled": true
+}

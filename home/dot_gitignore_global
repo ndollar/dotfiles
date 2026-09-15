@@ -1,0 +1,6 @@
+*~
+.DS_Store
+.nvmrc
+Chart.lock
+settings.local.json
+.claude/scheduled_tasks.lock
