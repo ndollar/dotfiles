@@ -35,10 +35,7 @@ load-nvmrc
 
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
-# <asdf>
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 export PATH="$(go env GOPATH)/bin:$PATH"
-# </asdf>
 
 [ -s "$HOME/.docker/init-zsh.sh" ] && source "$HOME/.docker/init-zsh.sh"
 

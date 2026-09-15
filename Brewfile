@@ -1,6 +1,4 @@
 tap "oven-sh/bun"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
 # Manage your dotfiles across multiple diverse machines, securely
