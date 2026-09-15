@@ -42,8 +42,6 @@ brew "tree"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun", trusted: true
 cask "font-jetbrains-mono-nerd-font"
-# Terminal emulator that uses platform-native UI and GPU acceleration
-cask "ghostty"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Reverse proxy, secure introspectable tunnels to localhost
