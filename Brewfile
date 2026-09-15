@@ -20,8 +20,6 @@ brew "go"
 brew "jd"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Simple terminal UI for git commands
-brew "lazygit"
 # TIFF library and utilities
 brew "libtiff"
 # Color management engine supporting ICC profiles
