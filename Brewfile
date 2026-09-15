@@ -43,5 +43,4 @@ cask "font-jetbrains-mono-nerd-font"
 cask "iterm2"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
-npm "@anthropic-ai/claude-code"
 npm "corepack"

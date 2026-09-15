@@ -12,4 +12,12 @@ fi
 
 chezmoi init --apply "$(dirname "$0")"
 
+if [ ! -d "$HOME/.nvm" ]; then
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | bash
+fi
+
+if [ ! -x "$HOME/.local/bin/claude" ]; then
+  curl -fsSL https://claude.ai/install.sh | bash
+fi
+
 brew bundle --file="$(dirname "$0")/Brewfile"
