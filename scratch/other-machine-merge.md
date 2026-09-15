@@ -11,7 +11,7 @@ git clone https://github.com/ndollar/dotfiles.git
 
 ## 1. See what the repo already manages
 
-Dotfiles live under `home/` (see `.chezmoiroot`). Current coverage: `.zshrc`, `.zprofile`, `.gitconfig`, `.gitignore_global`, `.tmux.conf`, `~/.ssh/config` (host aliases only), `~/.config/nvim` (kickstart.nvim-based), and a trimmed `~/.claude` (global `CLAUDE.md`, `settings.json`, the `pre-commit` skill).
+Dotfiles live under `home/` (see `.chezmoiroot`). Current coverage: `.zshrc`, `.zprofile`, `.gitconfig`, `.gitignore_global`, `.tmux.conf`, `~/.config/nvim` (kickstart.nvim-based), and a trimmed `~/.claude` (global `CLAUDE.md`, `settings.json`, the `pre-commit` skill).
 
 ## 2. Diff this machine against the repo
 

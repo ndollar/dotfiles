@@ -30,5 +30,4 @@ Commit and push changes from the chezmoi source dir (`chezmoi cd`) or directly i
 ## Notes
 
 - `nvim` config is based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
-- `~/.ssh/config` here only tracks host aliases, never keys.
 - Nothing in this repo should ever contain secrets/tokens — use a password manager or `chezmoi`'s encryption support (age/gpg) if that's ever needed.

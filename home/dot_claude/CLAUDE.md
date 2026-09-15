@@ -2,7 +2,7 @@
 
 ### Git
 #### Always create draft MRs/PRs
-When creating merge requests or pull requests, always create them as drafts (e.g., `glab mr create --draft` or `gh pr create --draft`).
+When creating pull requests, always create them as drafts (e.g., `gh pr create --draft`).
 
 ### General
 #### Be less verbose

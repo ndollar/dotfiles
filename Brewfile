@@ -12,8 +12,6 @@ brew "gh"
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
-# Open-source GitLab command-line tool
-brew "glab"
 # Render markdown on the CLI
 brew "glow"
 # Open source programming language to build simple/reliable/efficient software
