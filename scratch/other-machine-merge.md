@@ -51,3 +51,14 @@ Compare `brew bundle dump --force` output on this machine against the repo's `Br
 ## 6. Clean up
 
 Once this is done, delete this file (`scratch/other-machine-merge.md`) — it's a one-time migration note, not part of the ongoing setup.
+
+## Progress
+
+Done, from this machine's live config:
+- `home/dot_config/nvim/init.lua` now tracked (was previously fresh-clone-only): carries this machine's `ruby_lsp` LSP server, gitsigns `current_line_blame`, and enabling the `kickstart.plugins.gitsigns` require.
+- `Brewfile`: added `rbenv`, `ruby-build`, `postgresql@14`, `foreman`, `yarn` for local Rails dev.
+- `dot_zshrc`: added `rbenv` PATH/init, next to the other language version managers (nvm/gvm/go).
+
+Left out from this machine's live config (job/project-specific, per the gut-check above): Sourcetree diff/mergetool config and old `.gitconfig`/`.tmux.conf` content (repo's versions already supersede these), `heroku/brew` tap, Elixir/Erlang, Python 3.8/3.13 + pyenv + miniconda + uv (repo already has python@3.11), Rust, Solana CLI + cargo path, Mono, imagemagick/libheif/krb5/primesieve (transitive/unrelated libs), `docker`/`docker-desktop` cask (repo already covers `docker-compose`), `zsh`/`claude-code` casks (redundant with macOS default / install.sh's curl installer), `mermaid-ascii`/`spl-stake-pool-cli` (unrelated one-off tools).
+
+Still open: **the old work computer itself hasn't been audited** — this session only had filesystem access to the current machine. Repeat steps 1-5 there (or paste its `chezmoi diff` / relevant dotfiles here) before deleting this file.

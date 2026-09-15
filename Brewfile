@@ -16,6 +16,8 @@ brew "git-lfs"
 brew "glow"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Manage Procfile-based applications
+brew "foreman"
 # JSON diff and patch
 brew "jd"
 # Lightweight and flexible command-line JSON processor
@@ -28,12 +30,20 @@ brew "little-cms2"
 brew "neovim"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Object-relational database system
+brew "postgresql@14"
+# Ruby version manager
+brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Install various Ruby versions and implementations
+brew "ruby-build"
 # Terminal multiplexer
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# JavaScript package manager
+brew "yarn"
 cask "font-jetbrains-mono-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"

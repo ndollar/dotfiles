@@ -37,6 +37,9 @@ load-nvmrc
 
 export PATH="$(go env GOPATH)/bin:$PATH"
 
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 [ -s "$HOME/.docker/init-zsh.sh" ] && source "$HOME/.docker/init-zsh.sh"
 
 [ -s "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"

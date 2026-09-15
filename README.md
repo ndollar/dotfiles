@@ -29,5 +29,5 @@ Commit and push changes from the chezmoi source dir (`chezmoi cd`) or directly i
 
 ## Notes
 
-- `nvim`: `install.sh` clones [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) fresh into `~/.config/nvim`; this repo only tracks `lua/custom/`, so kickstart itself stays pullable/upstream. If you start editing `init.lua` directly, track that file here too.
+- `nvim`: `install.sh` clones [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) fresh into `~/.config/nvim`, then chezmoi overlays this repo's `init.lua` and `lua/custom/` on top (in that order), so kickstart itself stays pullable/upstream while local edits to `init.lua` (currently: `ruby_lsp` LSP server, gitsigns current-line blame) are tracked here too. Ruby version management (`rbenv`) is handled in `dot_zshrc`/`Brewfile`, not in this file.
 - Nothing in this repo should ever contain secrets/tokens — use a password manager or `chezmoi`'s encryption support (age/gpg) if that's ever needed.
