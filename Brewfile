@@ -42,6 +42,8 @@ brew "ruby-build"
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Parser generator tool and incremental parsing library (kickstart.nvim needs the CLI to build treesitter parsers)
+brew "tree-sitter-cli"
 # JavaScript package manager
 brew "yarn"
 cask "font-jetbrains-mono-nerd-font"

@@ -14,6 +14,10 @@ if [ ! -d "$HOME/.config/nvim" ]; then
   git clone https://github.com/nvim-lua/kickstart.nvim.git "$HOME/.config/nvim"
 fi
 
+# Enable loading lua/custom/plugins/*.lua (kickstart ships this commented out);
+# our actual customizations (ruby_lsp, gitsigns tweaks) live there, not in init.lua.
+sed -i '' "s|-- require 'custom.plugins'|require 'custom.plugins'|" "$HOME/.config/nvim/init.lua"
+
 chezmoi init --apply "$(dirname "$0")"
 
 if [ ! -d "$HOME/.nvm" ]; then

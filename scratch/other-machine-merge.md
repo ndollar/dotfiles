@@ -55,9 +55,13 @@ Once this is done, delete this file (`scratch/other-machine-merge.md`) — it's 
 ## Progress
 
 Done, from this machine's live config:
-- `home/dot_config/nvim/init.lua` now tracked (was previously fresh-clone-only): carries this machine's `ruby_lsp` LSP server, gitsigns `current_line_blame`, and enabling the `kickstart.plugins.gitsigns` require.
-- `Brewfile`: added `rbenv`, `ruby-build`, `postgresql@14`, `foreman`, `yarn` for local Rails dev.
+- `nvim`: this machine's `ruby_lsp` + gitsigns `current_line_blame` customizations now live in `home/dot_config/nvim/lua/custom/plugins/{ruby,gitsigns}.lua` (see below — *not* a vendored `init.lua`).
+- `Brewfile`: added `rbenv`, `ruby-build`, `postgresql@14`, `foreman`, `yarn` for local Rails dev, plus `tree-sitter-cli` (see below).
 - `dot_zshrc`: added `rbenv` PATH/init, next to the other language version managers (nvm/gvm/go).
+
+**Nvim approach, revised:** initially vendored the whole live `init.lua` (~1000 lines) to carry 3 small edits. Reverted that — instead: `install.sh` uncomments kickstart's one `require 'custom.plugins'` line, and the actual overrides live in small standalone files under `lua/custom/plugins/` (only those files are tracked, not kickstart's own `init.lua` or its loader). Verified live end-to-end via headless Neovim (both the old lazy.nvim-based kickstart this machine was running, and upstream's current `main`).
+
+**Bigger finding:** `install.sh`'s kickstart clone is unpinned from `main`, and upstream kickstart.nvim rewrote itself to Neovim's native `vim.pack` plugin manager on 2026-09-14 (the day before this work) — a full architecture change from the lazy.nvim/Mason setup this machine still runs. Explicitly decided to keep tracking `main` as-is rather than pin to a known-good commit, so the `ruby.lua`/`gitsigns.lua` overrides above target the *new* `vim.pack` structure (tested against a real fresh clone + portable Neovim 0.12.5, not this machine's installed 0.11.5). Also discovered kickstart's new treesitter setup needs the `tree-sitter` CLI (`tree-sitter-cli` formula, not the `tree-sitter` formula — that one's just the library) to compile parsers; added to `Brewfile`. Since `main` is unpinned, a future kickstart rewrite could break these extension points again — worth a quick check the first time `nvim` is opened on the new machine.
 
 Left out from this machine's live config (job/project-specific, per the gut-check above): Sourcetree diff/mergetool config and old `.gitconfig`/`.tmux.conf` content (repo's versions already supersede these), `heroku/brew` tap, Elixir/Erlang, Python 3.8/3.13 + pyenv + miniconda + uv (repo already has python@3.11), Rust, Solana CLI + cargo path, Mono, imagemagick/libheif/krb5/primesieve (transitive/unrelated libs), `docker`/`docker-desktop` cask (repo already covers `docker-compose`), `zsh`/`claude-code` casks (redundant with macOS default / install.sh's curl installer), `mermaid-ascii`/`spl-stake-pool-cli` (unrelated one-off tools).
 
