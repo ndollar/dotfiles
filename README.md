@@ -19,13 +19,15 @@ This installs Homebrew and chezmoi if missing, symlinks everything in `home/` in
 
 ## Updating
 
+`install.sh` points chezmoi's `sourceDir` straight at wherever you cloned this repo (via `~/.config/chezmoi/chezmoi.toml`), rather than the more common `chezmoi init <repo>` flow — that would `git clone` this repo *again* into a separate `~/.local/share/chezmoi`, a second copy disconnected from the one `git pull` actually updates. So there's only ever one clone of this repo on a machine:
+
 ```sh
-chezmoi edit ~/.zshrc   # edits home/dot_zshrc in this repo
-chezmoi apply           # re-symlink/apply changes
-chezmoi cd               # drop into the source dir directly
+cd wherever/you/cloned/dotfiles
+git pull
+chezmoi apply    # re-symlink/apply changes
 ```
 
-Commit and push changes from the chezmoi source dir (`chezmoi cd`) or directly in this repo if you're not using `chezmoi init` locally.
+Edit files directly under `home/` in your clone, then `git add`/`commit`/`push` as normal.
 
 ## Notes
 

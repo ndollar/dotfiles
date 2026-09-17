@@ -18,7 +18,16 @@ fi
 # our actual customizations (ruby_lsp, gitsigns tweaks) live there, not in init.lua.
 sed -i '' "s|-- require 'custom.plugins'|require 'custom.plugins'|" "$HOME/.config/nvim/init.lua"
 
-chezmoi init --apply "$(dirname "$0")"
+# `chezmoi init <path>` would git-clone this repo again into a separate
+# ~/.local/share/chezmoi - a second, disconnected copy that `git pull` here
+# never touches. Point chezmoi's sourceDir straight at this checkout's home/
+# instead, so it's always in sync with wherever this repo actually lives.
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+mkdir -p "$HOME/.config/chezmoi"
+if ! grep -q "^sourceDir" "$HOME/.config/chezmoi/chezmoi.toml" 2>/dev/null; then
+  printf 'sourceDir = "%s/home"\n' "$DOTFILES_DIR" >>"$HOME/.config/chezmoi/chezmoi.toml"
+fi
+chezmoi apply
 
 # Point iTerm2 at the chezmoi-managed plist (home/dot_config/iterm2/) instead
 # of the default ~/Library/Preferences/ location, so prefs stay tracked here.
