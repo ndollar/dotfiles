@@ -24,6 +24,15 @@ if [ ! -d "$HOME/.nvm" ]; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | bash
 fi
 
+# nvm's installer only wires itself into shell rc files; source it and
+# install a Node version now so `npm "corepack"` below has an `npm` to run.
+export NVM_DIR="$HOME/.nvm"
+# shellcheck disable=SC1091
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+if ! command -v node >/dev/null 2>&1; then
+  nvm install --lts
+fi
+
 if [ ! -x "$HOME/.local/bin/claude" ]; then
   curl -fsSL https://claude.ai/install.sh | bash
 fi
