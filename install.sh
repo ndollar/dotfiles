@@ -18,6 +18,19 @@ fi
 # our actual customizations (ruby_lsp, gitsigns tweaks) live there, not in init.lua.
 sed -i '' "s|-- require 'custom.plugins'|require 'custom.plugins'|" "$HOME/.config/nvim/init.lua"
 
+# dot_zshrc assumes oh-my-zsh, plus these two custom plugins (fzf-zsh-plugin
+# bootstraps its own fzf binary into ~/.fzf if needed, no separate brew step).
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
+if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
+  git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+fi
+if [ ! -d "$ZSH_CUSTOM/plugins/fzf-zsh-plugin" ]; then
+  git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git "$ZSH_CUSTOM/plugins/fzf-zsh-plugin"
+fi
+
 # `chezmoi init <path>` would git-clone this repo again into a separate
 # ~/.local/share/chezmoi - a second, disconnected copy that `git pull` here
 # never touches. Point chezmoi's sourceDir straight at this checkout's home/
