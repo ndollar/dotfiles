@@ -10,6 +10,10 @@ if ! command -v chezmoi >/dev/null 2>&1; then
   brew install chezmoi
 fi
 
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
 if [ ! -d "$HOME/.config/nvim" ]; then
   git clone https://github.com/nvim-lua/kickstart.nvim.git "$HOME/.config/nvim"
 fi

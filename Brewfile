@@ -18,6 +18,8 @@ brew "glow"
 brew "go"
 # Manage Procfile-based applications
 brew "foreman"
+# Command-line fuzzy finder (oh-my-zsh fzf plugin uses it for keybindings/completion)
+brew "fzf"
 # JSON diff and patch
 brew "jd"
 # Lightweight and flexible command-line JSON processor
