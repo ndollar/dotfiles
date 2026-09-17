@@ -20,6 +20,11 @@ sed -i '' "s|-- require 'custom.plugins'|require 'custom.plugins'|" "$HOME/.conf
 
 chezmoi init --apply "$(dirname "$0")"
 
+# Point iTerm2 at the chezmoi-managed plist (home/dot_config/iterm2/) instead
+# of the default ~/Library/Preferences/ location, so prefs stay tracked here.
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.config/iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
 if [ ! -d "$HOME/.nvm" ]; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | bash
 fi
