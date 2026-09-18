@@ -1205,7 +1205,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>4</integer>
+			<integer>16</integer>
 			<key>Working Directory</key>
 			<string>/Users/nick</string>
 		</dict>
