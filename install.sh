@@ -69,3 +69,9 @@ if [ ! -x "$HOME/.local/bin/claude" ]; then
 fi
 
 brew bundle --file="$(dirname "$0")/Brewfile"
+
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+if [ ! -d "$TPM_DIR" ]; then
+  git clone --depth 1 https://github.com/tmux-plugins/tpm "$TPM_DIR"
+fi
+"$TPM_DIR/bin/install_plugins"
